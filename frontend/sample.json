@@ -1,0 +1,71 @@
+{
+  "status": "ok",
+  "totalResults": 5,
+  "articles": [
+    {
+      "source": {
+        "id": "abc-news-au",
+        "name": "ABC News (AU)"
+      },
+      "author": "ABC News",
+      "title": "Australian Cricketers' Association backs Tim Paine following resignation as men's Test captain",
+      "description": "The ACA shows its support for Tim Paine, saying it didn't feel he needed to step down as Australian men's Test captain despite the sexting scandal revelations.",
+      "url": "http://www.abc.net.au/news/2021-11-19/tim-paine-supported-by-australian-crickters-association/100635728",
+      "urlToImage": "https://live-production.wcms.abc-cdn.net.au/a0214fa41a05f430b0d5ca03c6426586?impolicy=wcms_crop_resize&cropH=1688&cropW=3000&xPos=0&yPos=0&width=862&height=485",
+      "publishedAt": "2021-11-19T06:19:58Z",
+      "content": "The Australian Cricketers' Association (ACA) has shown support for Tim Paine, saying it is saddened he \"felt the need to resign\" as Australian men's Test captain.\r\nPaine announced on Friday afternoon… [+1133 chars]"
+    },
+    {
+      "source": {
+        "id": "independent",
+        "name": "Independent"
+      },
+      "author": "Tom Kershaw",
+      "title": "Azeem Rafiq apologises after historical antisemitic text messages emerge",
+      "description": "The former cricketer ‘deeply ashamed’ for remarks and is a ‘different person today’",
+      "url": "http://www.independent.co.uk/sport/cricket/azeem-rafiq-texts-antisemitism-b1960238.html",
+      "urlToImage": "https://static.independent.co.uk/2021/11/15/16/newFile-8.jpg?width=1200&auto=webp&quality=75",
+      "publishedAt": "2021-11-18T18:25:49Z",
+      "content": "Azeem Rafiq has issued an apology after a text message conversation emerged in which he used antisemitic slurs when discussing another cricketer in 2011.\r\nRafiqs testimony to a parliamentary select c… [+2462 chars]"
+    },
+    {
+      "source": {
+        "id": "talksport",
+        "name": "TalkSport"
+      },
+      "author": "Jackson Cole",
+      "title": "Azeem Rafiq ‘ashamed’ as ex-Yorkshire cricketer issues apology for using anti-Semitic language in messages...",
+      "description": "",
+      "url": "https://talksport.com/sport/cricket/985181/azeem-rafiq-apology-racist-messages-yorkshire/",
+      "urlToImage": "https://talksport.com/wp-content/uploads/sites/5/2021/11/NINTCHDBPICT000694115443.jpg?strip=all&quality=100&w=1200&h=800&crop=1",
+      "publishedAt": "2021-11-18T17:50:03Z",
+      "content": "Azeem Rafiq has apologised for using racial slurs in an exchange of messages with another cricketer. \r\nThe former Yorkshire cricketer, 30, sent shockwaves in the sport with his testimony in front of … [+3719 chars]"
+    },
+    {
+      "source": {
+        "id": "espn-cric-info",
+        "name": "ESPN Cric Info"
+      },
+      "author": null,
+      "title": "PCB hands Umar Akmal three-year ban from all cricket | ESPNcricinfo.com",
+      "description": "Penalty after the batsman pleaded guilty to not reporting corrupt approaches | ESPNcricinfo.com",
+      "url": "http://www.espncricinfo.com/story/_/id/29103103/pcb-hands-umar-akmal-three-year-ban-all-cricket",
+      "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1099495_800x450.jpg",
+      "publishedAt": "2020-04-27T11:41:47Z",
+      "content": "Umar Akmal's troubled cricket career has hit its biggest roadblock yet, with the PCB handing him a ban from all representative cricket for three years after he pleaded guilty of failing to report det… [+1506 chars]"
+    },
+    {
+      "source": {
+        "id": "espn-cric-info",
+        "name": "ESPN Cric Info"
+      },
+      "author": null,
+      "title": "What we learned from watching the 1992 World Cup final in full again | ESPNcricinfo.com",
+      "description": "Wides, lbw calls, swing - plenty of things were different in white-ball cricket back then | ESPNcricinfo.com",
+      "url": "http://www.espncricinfo.com/story/_/id/28970907/learned-watching-1992-world-cup-final-full-again",
+      "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1219926_1296x729.jpg",
+      "publishedAt": "2020-03-30T15:26:05Z",
+      "content": "Last week, we at ESPNcricinfo did something we have been thinking of doing for eight years now: pretend-live ball-by-ball commentary for a classic cricket match. We knew the result, yes, but we tried… [+6823 chars]"
+    }
+  ]
+}
