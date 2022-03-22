@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { listSavednews } from "../actions/savednewsAction";
+import { deleteNewsAction, listSavednews } from "../actions/savednewsAction";
 import Loading from "../component/Loading";
 import { useHistory } from "react-router-dom";
 import Navbar from "../component/Navbar";
@@ -9,7 +9,9 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
-
+import DeleteIcon from "@mui/icons-material/Delete";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 import {
   Button,
   CardActionArea,
@@ -32,74 +34,106 @@ const MySavedNews = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+
+  const newsDelete = useSelector((state) => state.newsDelete);
+  const { loading:loadingDelete, error:errorDelete,success:successDelete } = newsDelete;
+
+
+  const deleteHandler = (id) =>{
+      dispatch(deleteNewsAction(id));  
+      toast.success("Deleted Successfully",{
+          position:"top-right"
+        })
+    }
+
   useEffect(() => {
     dispatch(listSavednews());
 
     if (!userInfo) {
       history.push("/");
     }
-  }, [dispatch]);
+  }, [dispatch,successDelete,]);
+
+  const goto = (url) => {
+    window.open(url, "_blank");
+  };
 
   return (
     <>
       <Navbar />
 
-      <h1>saved news are</h1>
 
-      <div className="container">
+      <div className="container my-5"  >
         {loading && <Loading />}
 
-        {savednews?.reverse().map((news) => (
-          <>
-            {/* <div>{news.title}</div>
-                    <div>{news.description}</div>
-                    <div>{news.author}</div>
-                    <div>{news.imageUrl}</div>
-                    <div>{news.newsUrl}</div>
-                     */}
+        {errorDelete &&  {errorDelete}}
+       
+        <Container>
+          <Grid container spacing={2}>
+            {savednews?.reverse().map((news) => (
+              <>
+                <Grid item sm={6} xs={12} lg={4}>
+                  <Box p={2} textAlign="center">
+                    <Card
+                      sx={{ maxWidth: 345 }}
+                      style={{ margin: "20px 0px 0px 20px" }}
+                    >
+                      <CardActionArea>
+                        <CardMedia
+                          component="img"
+                          height="140"
+                          // image={news.imageUrl}
+                          image={
+                  news.imageUrl
+                    ? news.imageUrl
+                    : "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"
+                }
+                          alt="green iguana"
+                        />
+                        <CardContent>
+                          <Typography gutterBottom variant="h5" component="div">
+                            {news.title}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            {news.description}
+                          </Typography>
+                        </CardContent>
+                      </CardActionArea>
 
-            <Container maxWidth="lg">
-              <Grid container spacing={2}>
-                <Grid item sm={10} md={3} lg={4} xs={4}>
-                  <Card
-                    sx={{ maxWidth: 345 }}
-                    style={{ margin: "20px 0px 0px 20px" }}
-                  >
-                    <CardActionArea>
-                      <CardMedia
-                        component="img"
-                        height="140"
-                        image={news.imageUrl}
-                        alt="green iguana"
-                      />
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                          {news.title}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {news.description}
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                      <Button
-                        variant="contained"
-                        size="small"
-                        onClick={news.newsUrl}
-                      >
-                        Read more
-                      </Button>
+                      
+                      <CardActions>
+                        <Button
+                          variant="contained"
+                          size="small"
+                          onClick={() => goto(news.newsUrl)}
+                        >
+                          Read more
+                        </Button>
 
-                      <IconButton aria-label="add to favorites">
-                        <BookmarkBorderIcon />
-                      </IconButton>
-                    </CardActions>
-                  </Card>
+                        <Button
+                          variant="contained"
+                          color="secondary"
+                          size="small"
+                          onClick={() => deleteHandler(news._id)}
+                          className="btn btn-danger" 
+                          style={{"background":"red"}}
+                          endIcon={<DeleteIcon />}
+                        >
+                          Delete
+                        </Button>
+
+                        
+                      </CardActions>
+                    </Card>
+                  </Box>
                 </Grid>
-              </Grid>
-            </Container>
-          </>
-        ))}
+              </>
+            ))}
+
+            <ToastContainer 
+                          />
+          </Grid>
+        </Container>
       </div>
     </>
   );

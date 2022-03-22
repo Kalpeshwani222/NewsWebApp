@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SAVEDNEWS_LIST_FAIL, SAVEDNEWS_LIST_REQUEST, SAVEDNEWS_LIST_SUCCESS, SAVE_NEWS_FAIL, SAVE_NEWS_REQUEST, SAVE_NEWS_SUCCESS } from "../constants/savedNewsConstants";
+import { NEWS_DELETE_FAIL, NEWS_DELETE_REQUEST, NEWS_DELETE_SUCCESS, SAVEDNEWS_LIST_FAIL, SAVEDNEWS_LIST_REQUEST, SAVEDNEWS_LIST_SUCCESS, SAVE_NEWS_FAIL, SAVE_NEWS_REQUEST, SAVE_NEWS_SUCCESS } from "../constants/savedNewsConstants";
 
 
 //geting the saved news
@@ -84,3 +84,46 @@ export const addSaveNews = (title,description,imageUrl,newsUrl,author) => async 
     }
 }
 
+
+
+//delete
+
+export const deleteNewsAction = (id) => async (dispatch,getState) =>{
+    try {
+        dispatch({
+            type:NEWS_DELETE_REQUEST,
+        })
+
+         const {
+            userLogin : {userInfo},
+        } = getState();
+
+        const config ={
+            headers: {
+                "Content-Type": "application/json",
+                Authorization:`Bearer ${userInfo.token}`,
+            },
+        }
+
+        const {data} = await axios.delete(
+            `/api/savedNews/${id}`,
+            config
+        );
+
+        dispatch({
+            type: NEWS_DELETE_SUCCESS,
+            payload:data,
+        });
+
+    } catch (error) {
+        const message = 
+        error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+
+        dispatch({
+            type:NEWS_DELETE_FAIL,
+            payload:message,
+        });
+    }
+}

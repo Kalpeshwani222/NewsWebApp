@@ -12,14 +12,17 @@ import MySavedNews from "./screens/MySavedNews";
 //ed0c66bbdea640629dab0d6a82cd9ab8
 const App = () => {
   const pageSize = 5;
-  // const apiKey = "541f79b15e9343bc954d0e2a4bfd2f73";
-  const apiKey =  "ed0c66bbdea640629dab0d6a82cd9ab8";
+
+
+
+    const apiKey = process.env.REACT_APP_NEWS_API_KEY;
+  // const apiKey =  "ed0c66bbdea640629dab0d6a82cd9ab8";
 
   return (
     <>
 
-    <Raw />
-      {/* <BrowserRouter>
+    {/* <Raw /> */}
+      <BrowserRouter>
         <Switch>
           <Route exact path="/">
             <News
@@ -105,7 +108,7 @@ const App = () => {
           <Route path="/register" component={RegisterScreen} exact />
           <Route path="/home" component={Home} exact />
         </Switch>
-      </BrowserRouter> */}
+      </BrowserRouter>
     </>
   );
 };

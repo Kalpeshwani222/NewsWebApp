@@ -6,13 +6,15 @@ import { createStore,combineReducers,applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import {composeWithDevTools} from "redux-devtools-extension"
 import {userLoginReducers,userRegisterReducer} from "./reducers/userReducers";
-import {savedNewsReducers,saveNewsCreateReducer} from "./reducers/savedNewsReducers";
-
+import {savedNewsReducers,saveNewsCreateReducer,newsDeleteReducer} from "./reducers/savedNewsReducers";
+import {shareNewsReducer} from "./reducers/newsShareReducers"
 const reducer = combineReducers({
     userLogin: userLoginReducers,
     userRegister:userRegisterReducer,
     saveNewsList: savedNewsReducers, 
     saveNews : saveNewsCreateReducer,
+    newsDelete : newsDeleteReducer,
+    shareNews : shareNewsReducer,
 })
 
 const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem("userInfo")) : null;

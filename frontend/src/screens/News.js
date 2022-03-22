@@ -6,6 +6,7 @@ import Loading from "../component/Loading";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Navbar from "../component/Navbar";
 import { history, useHistory } from "react-router-dom";
+import { CircularProgress ,Box} from "@mui/material";
 
 
 const News = (props) => {
@@ -54,15 +55,21 @@ const News = (props) => {
       history.push("/")
     }
   },[])
+
+  const theme = {
+  spacing: 16,
+}
   return (
     <>
 
     <Navbar />
       <div className="container my-3">
-        <h2 className="text-center" style={{ marginTop: "5rem" }}>
+        {/* <h2 className="text-center" style={{ marginTop: "5rem" }}>
           headlines - {props.category}
-        </h2>
-        {loading && <Spinner />}
+        </h2> */}
+        {loading && <><Box mt={10} pl={10}>
+          <CircularProgress />
+        </Box></>}
 
         <InfiniteScroll
           dataLength={articles.length}
@@ -72,9 +79,11 @@ const News = (props) => {
         >
           <div className="container">
             <div className="row">
+
+            
               {articles.map((element) => {
                 return (
-                  <div className="col-md-4" key={element.url}>
+                  <div className="col-md-6 col-lg-4" key={element.url}>
                     <NewsItem
                       title={element.title ? element.title.slice(0, 40) : ""}
                       description={

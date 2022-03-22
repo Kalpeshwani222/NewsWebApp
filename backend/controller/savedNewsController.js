@@ -22,4 +22,26 @@ const savedNews = asyncHandler(async(req,res) =>{
 });
 
 
-module.exports = {savedNews,getNews}
+//delete news
+
+
+const DeleteNews = asyncHandler(async(req,res) =>{
+     const news = await saveNews.findById(req.params.id);
+
+     if(news.user.toString() !== req.user._id.toString()){
+            throw new Error("You can't perform this action");
+        }
+    
+        if(news){
+            await news.remove();
+            res.json({message:"News Removed Successfully"});
+        }else{
+             res.status(404);
+            throw new Error("News not Found");
+ 
+        }
+
+})
+
+
+module.exports = {savedNews,getNews,DeleteNews}

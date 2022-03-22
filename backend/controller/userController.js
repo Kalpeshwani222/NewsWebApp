@@ -1,3 +1,4 @@
+require('dotenv').config()
 const asyncHandler = require("express-async-handler");
 const User = require("../model/user");
 const generateToken = require("../util/generateToken");
@@ -7,7 +8,7 @@ const sendgridTransport = require("nodemailer-sendgrid-transport");
 
 const transporter = nodemailer.createTransport(sendgridTransport({
     auth:{
-        api_key:"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"
+        api_key:process.env.SENDGRID_API_KEY,
     }
 })) 
 
@@ -15,7 +16,6 @@ const transporter = nodemailer.createTransport(sendgridTransport({
 
 //register
 
-//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
 const registerUser = asyncHandler(async(req,res)=>{
       const { name,email,phone,password} = req.body; 
     

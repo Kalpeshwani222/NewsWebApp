@@ -5,11 +5,30 @@ import { history, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../actions/userAction";
 import Navbar from "../component/Navbar";
-import {CircularProgress} from '@mui/material'
+import { CircularProgress } from "@mui/material";
+import Backdrop from "@mui/material/Backdrop";
+import {
+  Container,
+  Typography,
+  TextField,
+  Checkbox,
+  Grid,
+  Button,
+  Box,
+  Link,
+  Avatar,
+  FormControlLabel,
+  FormControl,
+} from "@mui/material";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import CssBaseline from "@mui/material/CssBaseline";
+import { makeStyles } from "@mui/styles";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
+const theme = createTheme();
 const LoginScreen = () => {
   const history = useHistory();
-  
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,15 +37,11 @@ const LoginScreen = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
 
-  useEffect(() =>{
-    if(userInfo){
-      history.push('/')
+  useEffect(() => {
+    if (userInfo) {
+      history.push("/");
     }
-  },[history,userInfo])
-
- 
-
-
+  }, [history, userInfo]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -34,44 +49,94 @@ const LoginScreen = () => {
     dispatch(login(email, password));
   };
 
-   useEffect(()=>{
-    if(localStorage.getItem("userInfo")){
-      history.push("/entertainment")
+  useEffect(() => {
+    if (localStorage.getItem("userInfo")) {
+      history.push("/entertainment");
     }
-  },[])
+  }, []);
 
   return (
     <>
-    <Navbar/>
+      <Navbar />
+    <div style={{"margin-top":"4rem"}}> {error && <ErrorMessage>{error}</ErrorMessage>}</div>
+      <div style={{ margin: "1rem" }}>
     
-      <div
-        style={{ margin: "10rem", padding: "10px", border: "solid 1px black" }}
-      >
-        <div style={{ margin: "10px" }}>Login Page</div>
+        <ThemeProvider theme={theme}>
+          <Container component="main" maxWidth="xs">
+            <CssBaseline />
+            <Box
+              sx={{
+                marginTop: 8,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+                <LockOutlinedIcon />
+              </Avatar>
+              <Typography component="h1" variant="h5">
+                Sign in
+              </Typography>
+              <Box
+                component="form"
+                onSubmit={submitHandler}
+                noValidate
+                sx={{ mt: 1 }}
+              >
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  autoFocus
+                />
 
-        {loading &&<CircularProgress/>}
-        {error && <ErrorMessage>{error}</ErrorMessage>}
-        <form onSubmit={submitHandler}>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <br />
-          <br />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  type="password"
+                  id="password"
+                />
 
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <br />
-          <br />
+                {loading ? (
+                  <CircularProgress justify="center" />
+                ) : (
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2 }}
+                  >
+                    Sign In
+                  </Button>
+                )}
 
-          <button type="submit">Login</button>
-        </form>
+                <Grid container>
+                  <Grid item xs>
+                    <Link href="#" variant="body2">
+                      Forgot password?
+                    </Link>
+                  </Grid>
+                  <Grid item>
+                    <Link href="#" variant="body2">
+                      {"Don't have an account? Sign Up"}
+                    </Link>
+                  </Grid>
+                </Grid>
+              </Box>
+            </Box>
+          </Container>
+        </ThemeProvider>
       </div>
     </>
   );

@@ -7,7 +7,7 @@ const connectDB = require("./config/db");
 //for routes
 const userRoutes = require('./routes/userRoutes');
 const savedNewsRoutes = require('./routes/savedNewsRoutes');
-
+const shareNewsRoute = require('./routes/shareNewsRoute');
 const { errorHandler,notFound } = require("./middleware/errorMiddlewares");
 dotenv.config();
 const port = process.env.port;
@@ -26,6 +26,7 @@ app.use(express.json());
 //for routes
 app.use('/api/users',userRoutes);
 app.use('/api/savedNews',savedNewsRoutes);
+app.use('/api/share',shareNewsRoute);
 
 
 //for handling errors
@@ -37,3 +38,4 @@ app.use(errorHandler)
  app.listen(port,()=>{
      console.log(`server listining at ${port}`);
  })
+

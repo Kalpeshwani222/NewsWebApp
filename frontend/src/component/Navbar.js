@@ -1,22 +1,20 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Button } from "@mui/material";
-import {useDispatch,useSelector} from 'react-redux';
-import {logout} from "../actions/userAction";
-import Badge from '@mui/material/Badge';
-
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../actions/userAction";
+import Badge from "@mui/material/Badge";
 
 const Navbar = () => {
-const history = useHistory();
+  const history = useHistory();
   const dispatch = useDispatch();
 
-    const userLogin = useSelector(state => state.userLogin);
-    const {userInfo} = userLogin;
-      const logoutHandler = () => {
-      dispatch(logout());
-      history.push("/");
-    }
-
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+  const logoutHandler = () => {
+    dispatch(logout());
+    history.push("/");
+  };
 
   return (
     <>
@@ -83,38 +81,16 @@ const history = useHistory();
                       Technology
                     </Link>
                   </li>
-
-                  <b style={{"align-item":"left"}}> {userInfo.name}</b>
-
-
-<li className="nav-item">
-                    <Link className="nav-link" to="/savednews">
-                      {/* <Badge badgeContent={1} color="primary">SAVE</Badge> */}
-                      Save
-                    </Link>
-                  </li>
-                  <Button variant="contained" size="small" onClick={logoutHandler}>
-                      LogOut
-                    </Button>
-
-
                 </>
               ) : (
                 <>
                   <li>
-                    {/* <Button variant="contained" size="small">
-                      Login
-                    </Button> */}
-
                     <Link className="nav-link" to="/login">
                       Login
                     </Link>
                   </li>
 
                   <li>
-                    {/* <Button variant="contained" size="small">
-                      Register
-                    </Button> */}
                     <Link className="nav-link" to="/register">
                       Register
                     </Link>
@@ -122,6 +98,32 @@ const history = useHistory();
                 </>
               )}
             </ul>
+
+            {localStorage.getItem("userInfo") ? (
+              <>
+               <span class="navbar-text">
+                  <Link className="nav-link" to="/savednews">
+                    Save
+                  </Link>
+                </span>
+                <span class="navbar-text">
+                  <b style={{ "align-item": "left" }}> {userInfo.name}</b>
+                </span>
+               
+
+                <span>
+                  <Button
+                    variant="contained"
+                    size="small"
+                    onClick={logoutHandler}
+                  >
+                    LogOut
+                  </Button>
+                </span>
+              </>
+            ) : (
+              <h6>.</h6>
+            )}
           </div>
         </div>
       </nav>
