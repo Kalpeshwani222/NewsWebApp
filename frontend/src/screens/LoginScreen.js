@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Loading from "../component/Loading";
 import ErrorMessage from "../component/ErrorMessage";
-import { history, useHistory } from "react-router-dom";
+import { history, useHistory ,Link} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../actions/userAction";
 import Navbar from "../component/Navbar";
@@ -15,7 +15,6 @@ import {
   Grid,
   Button,
   Box,
-  Link,
   Avatar,
   FormControlLabel,
   FormControl,
@@ -123,9 +122,11 @@ const LoginScreen = () => {
 
                 <Grid container>
                   <Grid item xs>
-                    <Link href="#" variant="body2">
+                    
+                    <Link variant="body2" to="/reset-password">
                       Forgot password?
                     </Link>
+
                   </Grid>
                   <Grid item>
                     <Link href="#" variant="body2">

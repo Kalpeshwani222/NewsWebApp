@@ -5,14 +5,6 @@ const nodemailer = require("nodemailer")
 const sendgridTransport = require("nodemailer-sendgrid-transport");
 
 
-
-
-// from - user.email
-// to req.body
-// html - <><a>newsUrl</a></>
-
-
-
 const transporter = nodemailer.createTransport(sendgridTransport({
     auth:{
         api_key:process.env.SENDGRID_API_KEY,
@@ -33,7 +25,7 @@ const shareNews = asyncHandler(async(req,res) =>{
         try {
          transporter.sendMail({
                to:req.body.email,
-               from:"amolpatil131415@gmail.com",
+               from:"noreply.newsapplication@gmail.com",
                subject:"Sharing news to friend testing",
                html:`
                      <h5>News link - <a href=${req.body.newsUrl}>link</a></h5>`

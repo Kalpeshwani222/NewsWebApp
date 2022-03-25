@@ -8,6 +8,7 @@ const connectDB = require("./config/db");
 const userRoutes = require('./routes/userRoutes');
 const savedNewsRoutes = require('./routes/savedNewsRoutes');
 const shareNewsRoute = require('./routes/shareNewsRoute');
+const resetPassword = require('./routes/resetPassword');
 const { errorHandler,notFound } = require("./middleware/errorMiddlewares");
 dotenv.config();
 const port = process.env.port;
@@ -28,6 +29,7 @@ app.use('/api/users',userRoutes);
 app.use('/api/savedNews',savedNewsRoutes);
 app.use('/api/share',shareNewsRoute);
 
+app.use('/api/reset',resetPassword);
 
 //for handling errors
 app.use(notFound);

@@ -8,6 +8,7 @@ import News from "./screens/News";
 import Raw from "./component/Raw";
 import Loading from "./component/Loading";
 import MySavedNews from "./screens/MySavedNews";
+import ResetPassword from "./screens/ResetPassword"
 
 //ed0c66bbdea640629dab0d6a82cd9ab8
 const App = () => {
@@ -99,16 +100,18 @@ const App = () => {
           <Route path="/login" component={LoginScreen} exact />
           <Route path="/register" component={RegisterScreen} exact />
 
-          <Route path="/loading" component={Loading} exact />
+          {/* <Route path="/loading" component={Loading} exact /> */}
+          <Route path="/reset-password" component={ResetPassword} exact />
         </Switch>
       </BrowserRouter>
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Switch>
           <Route path="/login" component={LoginScreen} exact />
           <Route path="/register" component={RegisterScreen} exact />
           <Route path="/home" component={Home} exact />
+          <Route path="/reset-password" component={ResetPassword} exact />
         </Switch>
-      </BrowserRouter>
+      </BrowserRouter> */}
     </>
   );
 };

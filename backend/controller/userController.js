@@ -33,7 +33,7 @@ const registerUser = asyncHandler(async(req,res)=>{
        if(user){
            transporter.sendMail({
                to:user.email,
-               from:"amolpatil131415@gmail.com",
+               from:"noreply.newsapplication@gmail.com",
                subject:"SignUp Success",
                html:"<h1>Welcome to my NewsApplication</h1>"
            })

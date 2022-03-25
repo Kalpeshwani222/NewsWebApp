@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,8 +6,10 @@ import { logout } from "../actions/userAction";
 import Badge from "@mui/material/Badge";
 
 const Navbar = () => {
+
   const history = useHistory();
   const dispatch = useDispatch();
+const [show,setShow] = useState(false);
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -34,10 +36,11 @@ const Navbar = () => {
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
+             onClick={()=>setShow(!show)}
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <div className={`collapse navbar-collapse ${show ? "show" : ""}`}>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               {localStorage.getItem("userInfo") ? (
                 <>
@@ -67,7 +70,7 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/science">
+                    <Link className="nav-link" to="/science" style={{color: "red !important"}}>
                       Science
                     </Link>
                   </li>
