@@ -2,7 +2,7 @@ import {NEWS_SHARE_REQUEST,NEWS_SHARE_SUCCESS,NEWS_SHARE_FAIL} from "../constant
 import axios  from "axios";
 
 
-export const ShareNewsAction = (email,newsUrl) => async (dispatch,getState) =>{
+export const ShareNewsAction = (email,newsUrl,fromemail) => async (dispatch,getState) =>{
     try {
         dispatch({
             type:NEWS_SHARE_REQUEST,
@@ -21,7 +21,7 @@ export const ShareNewsAction = (email,newsUrl) => async (dispatch,getState) =>{
 
         const {data} = await axios.post(
             `/api/share/shareNews`,
-            {email,newsUrl},
+            {email,newsUrl,fromemail},
             config
         );
 

@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Loading from "../component/Loading";
 import ErrorMessage from "../component/ErrorMessage";
-import { history, useHistory } from "react-router-dom";
+import { history, useHistory,Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../actions/userAction";
 import Navbar from "../component/Navbar";
-
-
 import { CircularProgress } from "@mui/material";
 import Backdrop from "@mui/material/Backdrop";
 import {
@@ -25,7 +23,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import CssBaseline from "@mui/material/CssBaseline";
 import { makeStyles } from "@mui/styles";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
+import { ToastContainer, toast } from "react-toastify";
 const theme = createTheme();
 
 
@@ -36,7 +34,7 @@ const RegisterScreen = () => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [cpassword, setCPassword] = useState("");
   const [password, setPassword] = useState("");
 
   // const[error,setError] = useState(false);
@@ -55,8 +53,12 @@ const RegisterScreen = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
-    dispatch(register(name, email, phone, password));
+     if(password != cpassword){
+      toast.error("Password and CPassword does not match");
+    }else{
+      dispatch(register(name, email, password));
+    }
+    
   };
 
   useEffect(() => {
@@ -124,10 +126,9 @@ const RegisterScreen = () => {
 
 
       {/* material ui code  */}
-<div style={{"margin-top":"4rem"}}> {error && <ErrorMessage>{error}</ErrorMessage>}</div>
       <div style={{ margin: "1rem" }}>
 
-      
+       <ToastContainer />
       <ThemeProvider theme={theme}>
           <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -174,7 +175,7 @@ const RegisterScreen = () => {
                   id="email"
                 />
 
-                <TextField
+                {/* <TextField
                   margin="normal"
                   required
                   fullWidth
@@ -183,18 +184,30 @@ const RegisterScreen = () => {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   id="phone"
+                /> */}
+
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="Password"
+                  label="Enter Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  id="password"
+                  type = "password"
                 />
 
                 <TextField
                   margin="normal"
                   required
                   fullWidth
-                  name="Email"
-                  label="Enter Email"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  id="password"
-                  type = "password"
+                  name="cpassword"
+                  label="Enter Confirm Password"
+                  value={cpassword}
+                  onChange={(e) => setCPassword(e.target.value)}
+                  id="cpasswrod"
+                  type="password"
                 />
 
                 {loading ? (
@@ -210,7 +223,7 @@ const RegisterScreen = () => {
                   </Button>
                 )}
 
-                {/* <Grid container>
+                <Grid container>
                   <Grid item xs>
                     
                     <Link variant="body2" to="/reset-password">
@@ -219,11 +232,11 @@ const RegisterScreen = () => {
 
                   </Grid>
                   <Grid item>
-                    <Link href="#" variant="body2">
-                      {"Don't have an account? Sign Up"}
+                    <Link href="body2" to="/login">
+                      {"You have an Account? Sign In"}
                     </Link>
                   </Grid>
-                </Grid> */}
+                </Grid>
               </Box>
             </Box>
           </Container>

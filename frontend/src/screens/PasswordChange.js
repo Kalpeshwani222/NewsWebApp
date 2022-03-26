@@ -1,15 +1,26 @@
 import React, { useState } from "react";
+import {useHistory} from 'react-router-dom'
 import { Button, Container, TextField, CircularProgress } from "@mui/material";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
 const PasswordChange = (props) => {
+  const history = useHistory();
+
+
   const [code, setCode] = useState("");
   const [password, setPassword] = useState("");
+  const[cpassword,setCPassword] = useState("");
+
   const [loading, setLoading] = useState(false);
   const email = props.email;
   const changePassword = async () => {
-    try {
+
+
+    if(password != cpassword){
+      toast.error("Password and Confirm Password does not match");
+    }else{
+      try {
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -30,6 +41,7 @@ const PasswordChange = (props) => {
 
       if (response.data.statusText == "Success") {
         toast.success(response.data.message);
+        
       } else {
         toast.error(response.data.message);
          setLoading(false);
@@ -37,6 +49,7 @@ const PasswordChange = (props) => {
     } catch (error) {
       toast.error("Something went wrong");
        setLoading(false);
+    }
     }
   };
   return (
@@ -47,12 +60,25 @@ const PasswordChange = (props) => {
         margin="normal"
         required
         fullWidth
-        id="password"
-        label="Enter Password"
-        name="password"
+        id="otp"
+        label="Enter OTP"
+        name="OTP"
         value={code}
         onChange={(e) => setCode(e.target.value)}
         autoFocus
+      />
+
+      <TextField
+        margin="normal"
+        required
+        fullWidth
+        id="cpassword"
+        label="Enter Confirm Password"
+        name="cpassword"
+        value={cpassword}
+        onChange={(e) => setCPassword(e.target.value)}
+        autoFocus
+        type="password"
       />
 
       <TextField
@@ -65,6 +91,7 @@ const PasswordChange = (props) => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         autoFocus
+        type="password"
       />
 
       <Button

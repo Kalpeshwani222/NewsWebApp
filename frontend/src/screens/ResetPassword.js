@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Button, Container, TextField, CircularProgress } from "@mui/material";
+import { Button, Container, TextField, CircularProgress,Box } from "@mui/material";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import PasswordChange from "./PasswordChange";
-
+import Navbar from "../component/Navbar";
 const ResetPassword = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
@@ -44,9 +44,22 @@ const ResetPassword = () => {
 
   return (
     <>
+
+     
+      <div style={{ margin: "6rem" }}>
+    <Navbar />
       <ToastContainer />
 
-      <Container>
+      <Container component="main" maxWidth="xs">
+
+      <Box
+              sx={{
+                marginTop: 8,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            ></Box>
         { otpForm ? 
         <>
         <TextField
@@ -80,6 +93,8 @@ const ResetPassword = () => {
         : <PasswordChange email = {email} />
         }
       </Container>
+      
+      </div>
     </>
   );
 };

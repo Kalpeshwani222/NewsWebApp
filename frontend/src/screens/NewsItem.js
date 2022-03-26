@@ -20,6 +20,7 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/system";
 import ModalUnstyled from "@mui/base/ModalUnstyled";
+import { ToastContainer, toast } from "react-toastify";
 
 
 
@@ -65,8 +66,8 @@ const NewsItem = (props) => {
 
   //save news actions
   const saveNews = useSelector((state) => state.saveNews);
-  const { loading, error, save } = saveNews;
-
+  const { loading:loadingSave, error:errorSave, success:successSave } = saveNews;
+ 
   //current login user details
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -74,7 +75,9 @@ const NewsItem = (props) => {
   //save news function passing parameters
   const Gettitle = (imageUrl, title, description, newsUrl, author) => {
     dispatch(addSaveNews(title, description, imageUrl, newsUrl, author));
+    toast.success("Save Successfully")
   };
+
 
   //details news function
   const readMore = (url) => {
@@ -97,22 +100,19 @@ const NewsItem = (props) => {
   const [toEmail, setToEmail] = useState("");
 
   const shareNews = async (url) => {
-    dispatch(ShareNewsAction(toEmail, url));
+    dispatch(ShareNewsAction(toEmail, url,userInfo.email));
     handleClose();
-
-    // const newURL = window.location.href;
-
-    // const lastItem = newURL.substring(newURL.lastIndexOf("/") + 1);
-    // console.log(lastItem);
-    // history.push(`/${lastItem}`);
-
-   
+  
   };
 
   return (
     <>
       <div className="">
         <div className="">
+
+        
+<ToastContainer />
+
           <Card sx={{ maxWidth: 345 }} style={{ margin: "4rem 0px 0px 0px" }}>
             <CardActionArea>
               <CardMedia

@@ -7,6 +7,8 @@ import { login } from "../actions/userAction";
 import Navbar from "../component/Navbar";
 import { CircularProgress } from "@mui/material";
 import Backdrop from "@mui/material/Backdrop";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import {
   Container,
   Typography,
@@ -47,6 +49,9 @@ const LoginScreen = () => {
 
     dispatch(login(email, password));
   };
+   if(error){
+     toast.error(error);
+  }
 
   useEffect(() => {
     if (localStorage.getItem("userInfo")) {
@@ -54,10 +59,12 @@ const LoginScreen = () => {
     }
   }, []);
 
+ 
+
   return (
     <>
       <Navbar />
-    <div style={{"margin-top":"4rem"}}> {error && <ErrorMessage>{error}</ErrorMessage>}</div>
+        <ToastContainer  draggable/>
       <div style={{ margin: "1rem" }}>
     
         <ThemeProvider theme={theme}>
@@ -129,7 +136,7 @@ const LoginScreen = () => {
 
                   </Grid>
                   <Grid item>
-                    <Link href="#" variant="body2">
+                    <Link href="body2" to="/register">
                       {"Don't have an account? Sign Up"}
                     </Link>
                   </Grid>

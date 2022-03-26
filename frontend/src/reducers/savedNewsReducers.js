@@ -31,7 +31,7 @@ export const saveNewsCreateReducer = (state = {}, action) => {
       return { loading: false, success: true };
 
     case SAVE_NEWS_FAIL:
-      return { loading: false, error: action.payload };
+      return { loading: false, error: action.payload,success:false };
 
     default:
       return state;

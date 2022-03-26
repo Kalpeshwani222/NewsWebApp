@@ -44,43 +44,45 @@ const [show,setShow] = useState(false);
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               {localStorage.getItem("userInfo") ? (
                 <>
-                  <li className="nav-item">
+                  <li className="nav-item" >
                     <Link
                       className="nav-link active"
                       aria-current="page"
                       to="/"
+                      style={{fontSize:"19px"}}
+                     
                     >
                       Home
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/business">
+                    <Link className="nav-link" to="/business" style={{fontSize:"19px"}} >
                       Business
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/entertainment">
+                    <Link className="nav-link" to="/entertainment" style={{fontSize:"19px"}}>
                       Entertainment
                     </Link>
                   </li>
 
                   <li className="nav-item">
-                    <Link className="nav-link" to="/health">
+                    <Link className="nav-link" to="/health" style={{fontSize:"19px"}}>
                       Health
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/science" style={{color: "red !important"}}>
+                    <Link className="nav-link" to="/science" style={{fontSize:"19px"}}>
                       Science
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/sport">
+                    <Link className="nav-link" to="/sport" style={{fontSize:"19px"}}>
                       Sport
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/technology">
+                    <Link className="nav-link" to="/technology" style={{fontSize:"19px"}}>
                       Technology
                     </Link>
                   </li>
@@ -88,13 +90,13 @@ const [show,setShow] = useState(false);
               ) : (
                 <>
                   <li>
-                    <Link className="nav-link" to="/login">
+                    <Link className="nav-link" to="/login" style={{fontSize:"19px"}}>
                       Login
                     </Link>
                   </li>
 
                   <li>
-                    <Link className="nav-link" to="/register">
+                    <Link className="nav-link" to="/register" style={{fontSize:"19px"}}>
                       Register
                     </Link>
                   </li>
@@ -105,12 +107,12 @@ const [show,setShow] = useState(false);
             {localStorage.getItem("userInfo") ? (
               <>
                <span class="navbar-text">
-                  <Link className="nav-link" to="/savednews">
+                  <Link className="nav-link" to="/savednews" style={{fontSize:"19px"}}>
                     Save
                   </Link>
                 </span>
                 <span class="navbar-text">
-                  <b style={{ "align-item": "left" }}> {userInfo.name}</b>
+                  <b style={{ "align-item": "left", margin:"0.5rem"}}> {userInfo.name}</b>
                 </span>
                
 

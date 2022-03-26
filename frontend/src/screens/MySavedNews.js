@@ -11,7 +11,6 @@ import Typography from "@mui/material/Typography";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
 import {
   Button,
   CardActionArea,
@@ -64,7 +63,9 @@ const MySavedNews = () => {
 
 
       <div className="container my-5"  >
-        {loading && <Loading />}
+        {loading && <><Box mt={10} pl={10}>
+          <CircularProgress />
+        </Box></>}
 
         {errorDelete &&  {errorDelete}}
        
@@ -130,8 +131,7 @@ const MySavedNews = () => {
               </>
             ))}
 
-            <ToastContainer 
-                          />
+            <ToastContainer />
           </Grid>
         </Container>
       </div>

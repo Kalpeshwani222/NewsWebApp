@@ -8,21 +8,14 @@ import News from "./screens/News";
 import Raw from "./component/Raw";
 import Loading from "./component/Loading";
 import MySavedNews from "./screens/MySavedNews";
-import ResetPassword from "./screens/ResetPassword"
+import ResetPassword from "./screens/ResetPassword";
 
-//ed0c66bbdea640629dab0d6a82cd9ab8
 const App = () => {
   const pageSize = 5;
-
-
-
-    const apiKey = process.env.REACT_APP_NEWS_API_KEY;
-  // const apiKey =  "ed0c66bbdea640629dab0d6a82cd9ab8";
+  const apiKey = process.env.REACT_APP_NEWS_API_KEY_2;
 
   return (
     <>
-
-    {/* <Raw /> */}
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
@@ -95,7 +88,7 @@ const App = () => {
             />
           </Route>
 
-          <Route path = "/savednews" component={MySavedNews} exact />
+          <Route path="/savednews" component={MySavedNews} exact />
 
           <Route path="/login" component={LoginScreen} exact />
           <Route path="/register" component={RegisterScreen} exact />

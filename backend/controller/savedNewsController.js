@@ -13,11 +13,23 @@ const getNews = asyncHandler(async(req,res) =>{
 //saved news
 const savedNews = asyncHandler(async(req,res) =>{
     const {title,description,imageUrl,newsUrl,author} = req.body;
+    response = {}
 
-    const savedN = new saveNews({user:req.user._id,title,description,imageUrl,newsUrl,author});
+    // const savedN = new saveNews({user:req.user._id,title,description,imageUrl,newsUrl,author});
+    //  const savenews = await savedN.save();
+
+    //  res.status(201).json(savenews);
+
+    try {
+         const savedN = new saveNews({user:req.user._id,title,description,imageUrl,newsUrl,author});
      const savenews = await savedN.save();
-
-     res.status(201).json(savenews);
+     response.message = "Saved Successfully";
+     response.statusText = "Success";
+    } catch (error) {
+        response.message = "Something went wrong";
+        response.statusText = "Error";
+    }
+    res.status(200).json(response); 
 
 });
 
