@@ -2,13 +2,13 @@ import React from "react";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Home from "./screens/Home";
-import Navbar from "./component/Navbar";
 import News from "./screens/News";
-import Raw from "./component/Raw";
-import Loading from "./component/Loading";
 import MySavedNews from "./screens/MySavedNews";
 import ResetPassword from "./screens/ResetPassword";
+import NewsChannelList from "./screens/NewsChannelList";
+import Channels from "./screens/Channels";
+
+
 
 const App = () => {
   const pageSize = 5;
@@ -88,23 +88,66 @@ const App = () => {
             />
           </Route>
 
+          {/* routes for channels of the news */}
+          <Route path="/channels" component={Channels} exact />
+
+          <Route path="/ndtv">
+            <NewsChannelList
+              domains="ndtv.com"
+              pageSize={pageSize}
+              apiKey={apiKey}
+            />
+          </Route>
+
+          <Route path="/hindustantimes">
+            <NewsChannelList
+              domains="hindustantimes.com"
+              pageSize={pageSize}
+              apiKey={apiKey}
+            />
+          </Route>
+
+          <Route path="/indianexpress">
+            <NewsChannelList
+              domains="indianexpress.com"
+              pageSize={pageSize}
+              apiKey={apiKey}
+            />
+          </Route>
+
+          <Route path="/news18">
+            <NewsChannelList
+              domains="news18.com"
+              pageSize={pageSize}
+              apiKey={apiKey}
+            />
+          </Route>
+          <Route path="/digitaltrends">
+            <NewsChannelList
+              domains="digitaltrends.com"
+              pageSize={pageSize}
+              apiKey={apiKey}
+            />
+          </Route>
+
+          <Route path="/india">
+            <NewsChannelList
+              domains="zeenews.india.com"
+              pageSize={pageSize}
+              apiKey={apiKey}
+            />
+          </Route>
+
+          {/* end */}
+
           <Route path="/savednews" component={MySavedNews} exact />
 
           <Route path="/login" component={LoginScreen} exact />
           <Route path="/register" component={RegisterScreen} exact />
 
-          {/* <Route path="/loading" component={Loading} exact /> */}
           <Route path="/reset-password" component={ResetPassword} exact />
         </Switch>
       </BrowserRouter>
-      {/* <BrowserRouter>
-        <Switch>
-          <Route path="/login" component={LoginScreen} exact />
-          <Route path="/register" component={RegisterScreen} exact />
-          <Route path="/home" component={Home} exact />
-          <Route path="/reset-password" component={ResetPassword} exact />
-        </Switch>
-      </BrowserRouter> */}
     </>
   );
 };

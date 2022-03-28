@@ -86,6 +86,15 @@ const [show,setShow] = useState(false);
                       Technology
                     </Link>
                   </li>
+
+                  
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/channels" style={{fontSize:"19px"}}>
+                      Filter
+                    </Link>
+                  </li>
+               
+
                 </>
               ) : (
                 <>
@@ -125,6 +134,8 @@ const [show,setShow] = useState(false);
                     LogOut
                   </Button>
                 </span>
+
+                
               </>
             ) : (
               <h6>.</h6>

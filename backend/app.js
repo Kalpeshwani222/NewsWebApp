@@ -41,3 +41,19 @@ app.use(errorHandler)
      console.log(`server listining at ${port}`);
  })
 
+
+
+// const NewsAPI = require('newsapi');
+// const newsapi = new NewsAPI('541f79b15e9343bc954d0e2a4bfd2f73');
+
+// newsapi.v2.everything({
+//  domains: 'ndtv.com',
+//   from: '2022-3-01',
+//   to: '2022-3-26',
+//   language: 'en',
+//   page: 2
+ 
+  
+// }).then(response => {
+//   console.log(response);
+// })
