@@ -136,7 +136,8 @@ const NewsItem = (props) => {
 
                 <p className="card-text">
                   <small className="text-muted">
-                    By {!author ? "Unknown" : author} on {date.substring(0, 10)}
+                    By {!author ? "Unknown" : author} 
+                    {/* on {date.substring(0, 10)} */}
                   </small>
                 </p>
               </CardContent>

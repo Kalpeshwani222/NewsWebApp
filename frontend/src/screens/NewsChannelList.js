@@ -38,7 +38,14 @@ const NewsChannelList = (props) => {
     //   page + 1
     // }&pageSize=${props.pageSize}`;
 
-        const url = `https://newsapi.org/v2/everything?domains=${props.domains}&apiKey=${props.apiKey}&page=${page+1}&&pageSize=${props.pageSize}&from=2022-3-26&to=2022-3-26`
+    
+      const today = new Date();
+      const dd = String(today.getDate()).padStart(2,'0');
+      const mm = String(today.getMonth()+1).padStart(2,'0');
+      const yy = today.getFullYear();
+      const from = yy+'/'+mm+'/'+dd
+
+        const url = `https://newsapi.org/v2/everything?domains=${props.domains}&apiKey=${props.apiKey}&page=${page+1}&&pageSize=${props.pageSize}&from=${from}&to=${from}`
 
 
 

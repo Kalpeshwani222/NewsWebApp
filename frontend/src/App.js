@@ -7,7 +7,7 @@ import MySavedNews from "./screens/MySavedNews";
 import ResetPassword from "./screens/ResetPassword";
 import NewsChannelList from "./screens/NewsChannelList";
 import Channels from "./screens/Channels";
-
+import Raw from "./component/Raw"
 
 
 const App = () => {
@@ -15,6 +15,8 @@ const App = () => {
   const apiKey = process.env.REACT_APP_NEWS_API_KEY_2;
 
   return (
+
+  
     <>
       <BrowserRouter>
         <Switch>

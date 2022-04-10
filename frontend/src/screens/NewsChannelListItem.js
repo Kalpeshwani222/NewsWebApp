@@ -1,10 +1,12 @@
 import React from 'react'
 import {Card,CardActionArea,CardMedia,Typography,CardContent} from"@mui/material"
-
+import Navbar from "../component/Navbar"
 const NewsChannelListItem = (props) => {
     let { title, description, imageUrl, newsUrl, author, date, source } = props;
   return (
    <div>
+
+   <Navbar />
       <Card sx={{ maxWidth: 345 }} style={{ margin: "4rem 0px 0px 0px" }}>
           <CardActionArea>
                 <CardMedia
@@ -28,7 +30,8 @@ const NewsChannelListItem = (props) => {
 
                 <p className="card-text">
                   <small className="text-muted">
-                    By {!author ? "Unknown" : author} on {date.substring(0, 10)}
+                    By {!author ? "Unknown" : author} 
+                    {/* on {date.substring(0, 10)} */}
                   </small>
                 </p>
               </CardContent>

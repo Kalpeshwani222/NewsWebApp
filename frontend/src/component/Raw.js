@@ -14,7 +14,7 @@ import React from "react";
 //   Box,
 // } from "@mui/material";
 // import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
-
+import {Card,CardContent,IconButton,CardMedia} from "@mui/material"
 import {Container,Typography,TextField,Checkbox,Grid,Button,Box,Link,Avatar,FormControlLabel, FormControl} from "@mui/material"
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -22,34 +22,24 @@ import { makeStyles } from '@mui/styles';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-const theme = createTheme();
+// function Copyright(props) {
+//   return (
+//     <Typography variant="body2" color="text.secondary" align="center" {...props}>
+//       {'Copyright © '}
+//       <Link color="inherit" href="https://mui.com/">
+//         Your Website
+//       </Link>{' '}
+//       {new Date().getFullYear()}
+//       {'.'}
+//     </Typography>
+//   );
+// }
 
 
 const Raw = () => {
 
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
-
+  
  
   return (
     <>
@@ -187,7 +177,6 @@ const Raw = () => {
       </Grid>
 
       </Container> */}
-
 
       {/* sucessfully created the cards */}
 
@@ -334,8 +323,9 @@ const Raw = () => {
       </Grid>
       </Container> */}
 
-
- <ThemeProvider theme={theme}>
+      {/* 
+//for login */}
+      {/* <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -399,11 +389,149 @@ const Raw = () => {
        
           
         </Box>
-        {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
+        
       </Container>
-    </ThemeProvider>
-     
+    </ThemeProvider> */}
 
+      {/* news channel cards */}
+
+      <div className="container mt-5">
+        <Grid container spacing={2}>
+
+
+          <Grid item sm={6} xs={12} lg={8}>
+
+
+            <Card sx={{ display: "flex" }}>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <CardMedia
+              component="img"
+              
+              image="/news-18.png"
+              alt="Live from space album cover"
+            />
+          </Box>
+
+          <CardContent sx={{ flex: "1 0 auto" }}>
+            <Typography component="div" variant="h5">
+              Aaj Tak
+            </Typography>
+          </CardContent>
+        </Card>
+
+
+          </Grid>
+        
+         <Grid item sm={6} xs={12} lg={8}>
+            <Card sx={{ display: "flex" }}>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <CardMedia
+            style={{
+              // width:"140px",
+              // height:"140px",
+              objectFit:"cover",
+              margin:"0.5rem",
+              borderRadius:"10px",
+              
+            }}
+              component="img"
+              
+              image="/hindutan-time.png"
+              alt="Live from space album cover"
+            />
+          </Box>
+
+          <CardContent sx={{ flex: "1 0 auto" }}>
+            <Typography component="div" variant="h5">
+              Aaj Tak
+            </Typography>
+          </CardContent>
+        </Card>
+          </Grid>
+
+           <Grid item sm={6} xs={12} lg={8}>
+            <Card sx={{ display: "flex" }}>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <CardMedia
+              component="img"
+               style={{
+              // width:"140px",
+              // height:"140px",
+              objectFit:"cover",
+              margin:"0.5rem",
+              borderRadius:"10px",
+              
+              
+            }}
+              image="/aaj-tak.png" 
+              alt="Live from space album cover"
+            />
+          </Box>
+
+          <CardContent sx={{ flex: "1 0 auto" }}>
+            <Typography component="div" variant="h5">
+              Aaj Tak
+            </Typography>
+          </CardContent>
+        </Card>
+          </Grid>
+
+          <Grid item sm={6} xs={12} lg={8}>
+            <Card sx={{ display: "flex" }}>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <CardMedia
+              component="img"
+               style={{
+              // width:"140px",
+              // height:"140px",
+              objectFit:"cover",
+              margin:"0.5rem",
+              borderRadius:"10px",
+              
+              
+            }}
+              image="/indian-exp.png" 
+              alt="Live from space album cover"
+            />
+          </Box>
+
+          <CardContent sx={{ flex: "1 0 auto" }}>
+            <Typography component="div" variant="h5">
+              Aaj Tak
+            </Typography>
+          </CardContent>
+        </Card>
+          </Grid>
+
+          <Grid item sm={6} xs={12} lg={8}>
+            <Card sx={{ display: "flex" }}>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <CardMedia
+              component="img"
+               style={{
+              // width:"140px",
+              // height:"140px",
+              objectFit:"cover",
+              margin:"0.5rem",
+              borderRadius:"10px",
+              
+              
+            }}
+              image="/digital-trend.jpg" 
+              alt="Live from space album cover"
+            />
+          </Box>
+
+          <CardContent sx={{ flex: "1 0 auto" }}>
+            <Typography component="div" variant="h5">
+              Aaj Tak
+            </Typography>
+          </CardContent>
+        </Card>
+          </Grid>
+        
+        </Grid>
+      </div>
     </>
   );
 };

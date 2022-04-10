@@ -90,7 +90,7 @@ const [show,setShow] = useState(false);
                   
                   <li className="nav-item">
                     <Link className="nav-link" to="/channels" style={{fontSize:"19px"}}>
-                      Filter
+                      Channels
                     </Link>
                   </li>
                
@@ -138,7 +138,7 @@ const [show,setShow] = useState(false);
                 
               </>
             ) : (
-              <h6>.</h6>
+              ""
             )}
           </div>
         </div>
