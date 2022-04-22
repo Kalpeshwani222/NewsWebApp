@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Loading from "../component/Loading";
 import ErrorMessage from "../component/ErrorMessage";
-import { history, useHistory,Link } from "react-router-dom";
+import { history, useHistory, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../actions/userAction";
 import Navbar from "../component/Navbar";
@@ -25,9 +25,6 @@ import { makeStyles } from "@mui/styles";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { ToastContainer, toast } from "react-toastify";
 const theme = createTheme();
-
-
-
 
 const RegisterScreen = () => {
   const history = useHistory();
@@ -53,12 +50,11 @@ const RegisterScreen = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-     if(password != cpassword){
+    if (password != cpassword) {
       toast.error("Password and CPassword does not match");
-    }else{
+    } else {
       dispatch(register(name, email, password));
     }
-    
   };
 
   useEffect(() => {
@@ -70,66 +66,9 @@ const RegisterScreen = () => {
   return (
     <>
       <Navbar />
-      {/* <div
-        style={{ margin: "10rem", padding: "10px", border: "solid 1px black" }}
-      >
-        <div style={{ margin: "10px" }}>Register Page</div>
-        {loading && <Loading />}
-
-        {error && <ErrorMessage>{error}</ErrorMessage>}
-        <form onSubmit={submitHandler}>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            name="name"
-            placeholder="Enter Name"
-          />
-          <br />
-          <br />
-
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <br />
-          <br />
-
-          <input
-            type="number"
-            name="phone"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
-          <br />
-          <br />
-
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <br />
-          <br />
-
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </form>
-      </div> */}
-
-
-
-
-
-      {/* material ui code  */}
       <div style={{ margin: "1rem" }}>
-
-       <ToastContainer />
-      <ThemeProvider theme={theme}>
+        <ToastContainer />
+        <ThemeProvider theme={theme}>
           <Container component="main" maxWidth="xs">
             <CssBaseline />
             <Box
@@ -175,17 +114,6 @@ const RegisterScreen = () => {
                   id="email"
                 />
 
-                {/* <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  name="number"
-                  label="Enter Mobile Number"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  id="phone"
-                /> */}
-
                 <TextField
                   margin="normal"
                   required
@@ -195,7 +123,7 @@ const RegisterScreen = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   id="password"
-                  type = "password"
+                  type="password"
                 />
 
                 <TextField
@@ -225,11 +153,9 @@ const RegisterScreen = () => {
 
                 <Grid container>
                   <Grid item xs>
-                    
                     <Link variant="body2" to="/reset-password">
                       Forgot password?
                     </Link>
-
                   </Grid>
                   <Grid item>
                     <Link href="body2" to="/login">
@@ -241,13 +167,7 @@ const RegisterScreen = () => {
             </Box>
           </Container>
         </ThemeProvider>
-
-              </div>
-     
-
-
-
-
+      </div>
     </>
   );
 };

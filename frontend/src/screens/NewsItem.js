@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { addSaveNews } from "../actions/savednewsAction";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect  } from 'react-router-dom'
+import { Redirect } from "react-router-dom";
 import { ShareNewsAction } from "../actions/shareNewsAction";
-import { history, useHistory,Link } from "react-router-dom";
+import { history, useHistory, Link } from "react-router-dom";
 import { Card } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
@@ -21,8 +21,7 @@ import {
 import { styled } from "@mui/system";
 import ModalUnstyled from "@mui/base/ModalUnstyled";
 import { ToastContainer, toast } from "react-toastify";
-
-
+import Raw from "../component/Raw";
 
 const StyledModal = styled(ModalUnstyled)`
   position: fixed;
@@ -66,8 +65,12 @@ const NewsItem = (props) => {
 
   //save news actions
   const saveNews = useSelector((state) => state.saveNews);
-  const { loading:loadingSave, error:errorSave, success:successSave } = saveNews;
- 
+  const {
+    loading: loadingSave,
+    error: errorSave,
+    success: successSave,
+  } = saveNews;
+
   //current login user details
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -75,13 +78,7 @@ const NewsItem = (props) => {
   //save news function passing parameters
   const Gettitle = (imageUrl, title, description, newsUrl, author) => {
     dispatch(addSaveNews(title, description, imageUrl, newsUrl, author));
-    toast.success("Save Successfully")
-  };
-
-
-  //details news function
-  const readMore = (url) => {
-    window.open(url, "_blank");
+    toast.success("Save Successfully");
   };
 
   //for model box
@@ -100,18 +97,15 @@ const NewsItem = (props) => {
   const [toEmail, setToEmail] = useState("");
 
   const shareNews = async (url) => {
-    dispatch(ShareNewsAction(toEmail, url,userInfo.email));
+    dispatch(ShareNewsAction(toEmail, url, userInfo.email));
     handleClose();
-  
   };
 
   return (
     <>
       <div className="">
         <div className="">
-
-        
-<ToastContainer />
+          <ToastContainer />
 
           <Card sx={{ maxWidth: 345 }} style={{ margin: "4rem 0px 0px 0px" }}>
             <CardActionArea>
@@ -128,15 +122,15 @@ const NewsItem = (props) => {
 
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                  {title}
+                  {title.slice(0, 50)}
                 </Typography>
 
                 <span className=" badge rounded-pill bg-danger">{source}</span>
-                <p className="card-text">{description}...</p>
+                <p className="card-text">{description.slice(0, 80)}...</p>
 
                 <p className="card-text">
                   <small className="text-muted">
-                    By {!author ? "Unknown" : author} 
+                    By {!author ? "Unknown" : author}
                     {/* on {date.substring(0, 10)} */}
                   </small>
                 </p>
@@ -144,13 +138,30 @@ const NewsItem = (props) => {
             </CardActionArea>
 
             <CardActions>
-              <Button
-                variant="contained"
+              {/* <Link
+              variant="contained"
                 size="small"
-                onClick={() => readMore(newsUrl)}
+                to={{
+                  pathname: "/details",
+                  state: {...props}
+                }}
+              >
+                Read more
+              </Link> */}
+
+              <Button
+                size="small"
+                component={Link}
+                to={{
+                  pathname: "/details",
+                  state: { ...props },
+                }}
+                variant="contained"
+                color="primary"
               >
                 Read more
               </Button>
+
               {userInfo ? (
                 <>
                   <div style={{ marginLeft: "auto" }}>
@@ -177,7 +188,7 @@ const NewsItem = (props) => {
                   >
                     <Box sx={style}>
                       <Typography variant="h4">Share News </Typography>
-                        {/* <h1>{location.pathname}</h1> */}
+                      {/* <h1>{location.pathname}</h1> */}
                       <TextField
                         id="outlined-basic"
                         label="From"
@@ -202,9 +213,6 @@ const NewsItem = (props) => {
 
                       <h6>{newsUrl}</h6>
 
-                      {/* <Button variant="contained" style={{margin:"10px"}} onClick={shareNews}>Send</Button>
-                       */}
-
                       <Button
                         variant="contained"
                         style={{ margin: "10px" }}
@@ -220,48 +228,6 @@ const NewsItem = (props) => {
               )}
             </CardActions>
           </Card>
-
-          {/* <div className="card" style={{ width: "18rem" }}>
-            <img
-              src={
-                imageUrl
-                  ? imageUrl
-                  : "https://images.hindustantimes.com/img/2021/11/19/1600x900/india-team-nz-bcci_1637303753067_1637303759509.jpg"
-              }
-              className="card-img-top"
-              alt="..."
-            />
-            <div className="card-body">
-              <h5 className="card-title">{title}.......</h5>
-              <span className=" badge rounded-pill bg-danger">{source}</span>
-              <p className="card-text">{description}</p>
-
-              <p className="card-text">
-                <small className="text-muted">
-                  By {!author ? "Unknown" : author} on {date}
-                </small>
-              </p>
-              <a
-                href={newsUrl}
-                target="_blank"
-                className="btn btn-sm btn-primary"
-              >
-                Read More
-              </a>
-
-              <Button
-                variant="contained"
-                size="small"
-                onClick={() =>
-                  Gettitle(imageUrl, title, description, newsUrl, author)
-                }
-              >
-                Save
-              </Button>
-
-             
-            </div>
-          </div> */}
         </div>
       </div>
     </>

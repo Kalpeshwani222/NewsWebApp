@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import Card from "@mui/material/Card";
 // import CardContent from "@mui/material/CardContent";
 // import CardMedia from "@mui/material/CardMedia";
@@ -39,7 +39,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const Raw = () => {
 
 
-  
  
   return (
     <>
@@ -395,7 +394,7 @@ const Raw = () => {
 
       {/* news channel cards */}
 
-      <div className="container mt-5">
+      {/* <div className="container mt-5">
         <Grid container spacing={2}>
 
 
@@ -531,7 +530,7 @@ const Raw = () => {
           </Grid>
         
         </Grid>
-      </div>
+      </div> */}
     </>
   );
 };

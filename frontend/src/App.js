@@ -8,7 +8,7 @@ import ResetPassword from "./screens/ResetPassword";
 import NewsChannelList from "./screens/NewsChannelList";
 import Channels from "./screens/Channels";
 import Raw from "./component/Raw"
-
+import NewsDeatailsPage from "./screens/NewsDetailsPage"
 
 const App = () => {
   const pageSize = 5;
@@ -89,6 +89,8 @@ const App = () => {
               category="technology"
             />
           </Route>
+
+          <Route path="/details" component={NewsDeatailsPage} exact />
 
           {/* routes for channels of the news */}
           <Route path="/channels" component={Channels} exact />

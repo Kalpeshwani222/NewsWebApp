@@ -85,10 +85,10 @@ const News = (props) => {
                 return (
                   <div className="col-md-6 col-lg-4" key={element.url}>
                     <NewsItem
-                      title={element.title ? element.title.slice(0, 50) : ""}
+                      title={element.title ? element.title : ""}
                       description={
                         element.description
-                          ? element.description.slice(0, 120)
+                          ? element.description
                           : ""
                       }
                       imageUrl={element.urlToImage}
